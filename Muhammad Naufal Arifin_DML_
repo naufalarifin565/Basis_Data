@@ -1,0 +1,71 @@
+CREATE TABLE Kategori (
+    id INT PRIMARY KEY,
+    genre VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Film (
+    id_film INT PRIMARY KEY,
+    judul VARCHAR(255) NOT NULL,
+    tahun_rilis INT,
+    id_kategori INT,
+    FOREIGN KEY (id_kategori) REFERENCES Kategori(id)
+);
+
+CREATE TABLE Aktor (
+    id_aktor INT PRIMARY KEY,
+    nama_aktor VARCHAR(255) NOT NULL,
+    kota_lahir VARCHAR(255),
+    tahun_lahir INT
+);
+
+INSERT INTO Kategori (id, genre) VALUES
+(1, 'Aksi'),
+(2, 'Komedi'),
+(3, 'Drama'),
+(4, 'Horor'),
+(5, 'Romantis');
+
+INSERT INTO Aktor (id_aktor, nama_aktor, kota_lahir, tahun_lahir) VALUES
+(1, 'Brad Pitt', 'Shawnee', 1963),
+(2, 'Jennifer Lawrence', 'Indian Hills', 1990),
+(3, 'Tom Hanks', 'Concord', 1956),
+(4, 'Angelina Jolie', 'Los Angeles', 1975),
+(5, 'Leonardo DiCaprio', 'Los Angeles', 1974),
+(6, 'Tom Hardy', 'New York', 1976),
+(7, 'Tom Holland', 'Los Angeles', 1975),
+(8, 'Robert Downey JR', 'London', 1968),
+(9, 'Ana De Armas', 'New York', 1980),
+(10, 'Christoper Nolan', 'London', 1964);
+
+INSERT INTO Film (id_film, judul, tahun_rilis, id_kategori) VALUES
+(1, 'Tom Jerry', 2010, 1),
+(2, 'Wonder Woman', 2017, 2),
+(3, 'Avenger', 2012, 3),
+(4, 'Tom Raider', 2020, 4),
+(5, 'Titanic', 1987, 5),
+(6, 'The Conjuring', 2023, 4),
+(7, 'Insidios', 2017, 4),
+(8, 'Ant Man', 2018, 1),
+(9, 'Assasins Creed', 2019, 1),
+(10, 'Batman', 2020, 1);
+
+UPDATE Film SET judul='Tom Raider 2' WHERE id_film = 4;
+UPDATE Aktor SET tahun_lahir=1965 WHERE id_aktor = 2;
+UPDATE Film SET tahun_rilis=2020 WHERE id_film = 7;
+UPDATE AKtor SET kota_lahir='London' WHERE id_aktor = 9;
+UPDATE Aktor SET nama_aktor='Patrick Wilson' WHERE id_aktor = 7;
+UPDATE Film SET id_kategori=1 WHERE id_film = 2;
+UPDATE Film SET judul='The Conjuring 2' WHERE id_film = 6;
+UPDATE Aktor SET tahun_lahir=1996 WHERE id_aktor = 9;
+UPDATE Film SET id_kategori=1 WHERE id_film = 9;
+UPDATE Aktor SET tahun_lahir=1978 WHERE id_aktor = 3;
+
+DELETE FROM Film WHERE id_film = 5;
+DELETE FROM Aktor WHERE id_aktor = 6;
+DELETE FROM Kategori WHERE id = 2;
+DELETE FROM Film WHERE id_film = 8;
+DELETE FROM Aktor WHERE id_aktor = 10;
+
+
+
+
